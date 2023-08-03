@@ -1,4 +1,5 @@
-##This script produces cases and controls used in SCCS
+##Data previously collected from Swathi, and taken up again after 2 years.
+##This script reads in data (messy) I have right now, and to re-write useful files as .csv files to clean up things
 
 #####################################################################################
 ## define working directories 
