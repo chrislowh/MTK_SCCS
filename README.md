@@ -17,8 +17,8 @@ Initial data collection was done by Swathi Pathadka in 2020, collating data from
 2. All diagnosis records and procedures for ?montelukast users
 3. Demographics for patients with a dispensing record for montelukast, including sex, age of birth and age of death
 4. All diagnosis records and procedures for patients with asthma (from 1993-01-06 to 2019-12-31)
-5. Dispensing records for all patients with asthma (from?)
-6. Demographics for all patients with asthma (from?)
+5. Dispensing records for all patients with asthma (from 2010-01-01 to 2020-12-31)
+6. Demographics for all patients with asthma
 
 These were saved as RData and RDS files previously. As the project was
 
