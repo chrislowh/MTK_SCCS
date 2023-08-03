@@ -16,7 +16,7 @@ Initial data collection was done by Swathi Pathadka in 2020, collating data from
 1. Dispensing records of montelukast from 1999-12-01 to 2018-12-31, regardless of indication
 2. All diagnosis records and procedures for ?montelukast users
 3. Demographics for patients with a dispensing record for montelukast, including sex, age of birth and age of death
-4. All diagnosis records and procedures for patients with asthma (from?)
+4. All diagnosis records and procedures for patients with asthma (from 1993-01-06 to 2019-12-31)
 5. Dispensing records for all patients with asthma (from?)
 6. Demographics for all patients with asthma (from?)
 
@@ -25,6 +25,6 @@ These were saved as RData and RDS files previously. As the project was
 This repository contains the following scripts under the directory **/scripts/**:
 
 **data_clean.R**: Data collected by Swathi Pathdaka were stored in RData and RDS files, and not processed. 
-This short script reads in data and re-write relevant information as .csv files for more convenient manipulation.
+This short script reads in data and re-write relevant information as .csv files for more convenient manipulation. Reading into this R.script, this will also serve as a showcase for all available data.
 
 **sccs_case_def.R**: 
