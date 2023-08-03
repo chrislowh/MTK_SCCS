@@ -1,5 +1,5 @@
 # MTK_SCCS
-This repository contains R codes for analysis used in the project named: 'Montelukast and the risk of neuropsychiatric events in patients with asthma: a self-controlled case series and nested case-control study'.
+This repository contains R codes for analysis used in the project named: **'Montelukast and the risk of neuropsychiatric events in patients with asthma: a self-controlled case series and nested case-control study'**.
 
 # Project History
 The project is an extension of final year project of Chris Wai Hang Lo, who was a final-year pharmacy student at the Unviersity of Hong Kong. 
