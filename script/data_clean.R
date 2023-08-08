@@ -57,11 +57,37 @@ load(file="raw/Asthma_demo.RData")
 #6. dispensing records for all patients with asthma (with or without MTK)
 asthma_rx <- readRDS(file='raw/Asthma_RX.RDS')
 
+#get a vector of names for all objects in the environment 
+df_names <- Filter(function(x) is.data.frame(get(x)), ls())
 
-##saving these objects as .csv files, for more convenient manipulation (non-R applications)
-df_names <- ls()
+################################################################################
+#Steps for preliminary cleaning
+################################################################################
 
-##for loop writing variables into .csv
+#1. function renaming columns containing date information as.date
+lapply(df_names, function(x) {
+  # Get dataframe
+  df <- get(x)
+  
+  # Get vector of column numbers with string match
+  colnum_date <- which((grepl('date', colnames(df), ignore.case = TRUE)))
+  
+  # Loop on each column
+  for (col in colnum_date) {
+    # Only run if the column does not contain characters (some columns contain information like True / False as the availability of data)
+    if (any(grepl("[[:alpha:]]", df[[col]])) == FALSE) {
+      # Update format as date
+      df[[col]] <- as.Date(df[[col]], format = "%Y-%m-%d")
+    }
+  }
+  
+  # Assign the modified data.table back to the object
+  assign(x, df, envir = .GlobalEnv)
+})
+
+
+
+#2. saving these objects as .csv files, for more convenient manipulation (non-R applications)
 for (i in df_names) {
   #get dataframe
   df <- get(i)
@@ -72,16 +98,17 @@ for (i in df_names) {
 
 # q()
 
+# References: for checking / issues to be settled
 # Check if the file exists
-file_path <- "raw/Asthma_RX.RDS"
-file.exists(file_path)
+#file_path <- "raw/Asthma_RX.RDS"
+#file.exists(file_path)
 
-##checking data
-MTK_dx_head <- MTK_dx[1:150,]
+# check data
+#df <- MTK_dx[1:150,]
 
 # Inpatient diagnoses and procedures?
 # not sure if this is necessary, should all be coded under 'all diagnosis'?
-load(file="raw/Montelukast_IP.RData")
-load(file="raw/Asthma_IP.RData")
+#load(file="raw/Montelukast_IP.RData")
+#load(file="raw/Asthma_IP.RData")
 
 
