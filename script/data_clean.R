@@ -60,34 +60,7 @@ asthma_rx <- readRDS(file='raw/Asthma_RX.RDS')
 #get a vector of names for all objects in the environment 
 df_names <- Filter(function(x) is.data.frame(get(x)), ls())
 
-################################################################################
-#Steps for preliminary cleaning
-################################################################################
-
-#1. function renaming columns containing date information as.date
-lapply(df_names, function(x) {
-  # Get dataframe
-  df <- get(x)
-  
-  # Get vector of column numbers with string match
-  colnum_date <- which((grepl('date', colnames(df), ignore.case = TRUE)))
-  
-  # Loop on each column
-  for (col in colnum_date) {
-    # Only run if the column does not contain characters (some columns contain information like True / False as the availability of data)
-    if (any(grepl("[[:alpha:]]", df[[col]])) == FALSE) {
-      # Update format as date
-      df[[col]] <- as.Date(df[[col]], format = "%Y-%m-%d")
-    }
-  }
-  
-  # Assign the modified data.table back to the object
-  assign(x, df, envir = .GlobalEnv)
-})
-
-
-
-#2. saving these objects as .csv files, for more convenient manipulation (non-R applications)
+#saving these objects as .csv files, for more convenient manipulation (non-R applications)
 for (i in df_names) {
   #get dataframe
   df <- get(i)
