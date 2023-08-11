@@ -1,5 +1,8 @@
 ##This script defines cases used in the self-controlled case series for the MTK project
 
+##Data cleaning is performed by Chris Wai Hang Lo on personal laptop, using R version 4.3.1
+##Estimated running time for current script: 12 hours 45 minutes
+
 #####################################################################################
 ## define working directories 
 #data is not stored on github repository for patient confidentiality purposes
@@ -472,11 +475,6 @@ rm(dx_MTK)
 # pt = 1875, it should be baseline anxiety
 # pt = 347, it should be anxiety as outcome
 
-#############################################################################
-##temporary function for backup
-##remove after script completed
-#MTK_rx_backup <- MTK_rx_cleaned
-######################################################################
 #----- 10. Extract baseline medications (asthma controllers) and report baseline status -----
 #read in prescription data
 rx_all <- read.csv('raw/asthma_rx.csv', header = TRUE)
@@ -761,17 +759,9 @@ summary <- rbind(summary,
                             number = summary[1,2] - sum(summary[2:nrow(summary), 2]) #2055
                  ))
 
-
+#MTK_rx_cleaned: dataframe containing patients' prescription records, baseline information and medication at baseline
 write.csv(MTK_rx_cleaned,file='cleaned/MTK_SCCS.csv', row.names = FALSE)
+#MTK_pt: containing patient list
 write.csv(MTK_pt,file='cleaned/MTK_pt_SCCS.csv', row.names = FALSE)
+#summary: flowchart summary
 write.csv(summary,file='cleaned/summary_flow_SCCS.csv', row.names = FALSE)
-
-#Test - Estimated running time for current script: 6.5 hours
-
-#Baseline characteristics to be reported
-# sex
-# age (year) - start of observation period and 1st MTK rx
-# comorbidities - start of observation period and 1st MTK rx
-# neuropsychiatric outcomes - not reported to avoid confusion? (patients with NE on or before observation period filtered, # of diagnosis before 1st MTK rx will be misleading)
-# medications - start of observation period and 1st MTK rx
-
