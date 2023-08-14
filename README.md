@@ -27,4 +27,4 @@ This repository contains the following scripts under the directory **/scripts/**
 **data_clean.R**: Data collected by Swathi Pathdaka were stored in RData and RDS files, and not processed. 
 This short script reads in data and re-write relevant information as .csv files for more convenient manipulation. Reading into this R.script, this will also serve as a showcase for all available data.
 
-**sccs_case_def.R**: 
+**sccs_case_def.R**: Containing codes used to identify eligible patients used in SCCS. Demographic information (sex / age), comorbidities and baseline medications on the date of montelukast initiation were extracted. A summary flow .csv file was also generated for reproducible outputs. 
